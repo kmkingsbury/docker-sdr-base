@@ -1,8 +1,10 @@
 # docker-sdr-base
 Base
 
+
 ```
-docker run -d -p 1234:1234 --privileged -v /dev/bus/usb:/dev/bus/usb 
+docker build -t node1 .
+docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb node1 /bin/bash
 ```
 
 # Reference:
