@@ -7,7 +7,60 @@ docker build -t node1 .
 docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb node1 /bin/bash
 ```
 
+```
+docker run -it \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \ # mount the X11 socket
+    -e DISPLAY=unix$DISPLAY \ # pass the display
+    --device /dev/snd \ # sound
+    --name tor-browser \
+    jess/tor-browser
+```
+
 # Reference:
+
+## Mac Setup Steps
+```
+brew install socat
+brew cask install xquartz
+open -a XQuartz
+
+socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
+# in another window (not the xquartz term)
+docker run -e DISPLAY=192.168.59.3:0 jess/geary
+```
+
+
+# Errors:
+
+### cannot open display: unix
+
+Fixed with installing xquartz and then RESTART(!!) log out/in doesn't seem to cut it on the Mac.
+```
+$ docker run -it --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --name firefox ff1
+
+(firefox:1): Gtk-WARNING **: Locale not supported by C library.
+	Using the fallback 'C' locale.
+Unable to init server: Broadway display type not supported: unix
+Error: cannot open display: unix
+```
+
+### cannot open display:
+```
+Unable to init server: Broadway display type not supported: unix/private/tmp/com.apple.launchd.Tjv7B0iR2Q/org.macosforge.xquartz:0
+Error: cannot open display: unix/private/tmp/com.apple.launchd.Tjv7B0iR2Q/org.macosforge.xquartz:0
+```
+
+### Unknown Cathode (terminal) Error.
+
+```
+$ sudo docker run --rm -i -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=192.168.148.108:0 --privileged --name cathode cathode
+Password:
+libGL error: No matching fbConfigs or visuals found
+libGL error: failed to load driver: swrast
+Unrecognized OpenGL version
+Unrecognized OpenGL version
+```
+
 
 ## RTL-SDR Howtos
 
@@ -32,4 +85,3 @@ https://hub.docker.com/r/resin/rpi-raspbian/tags/
   rtl_test -t
 
   ./dump1090  --interactive  --net  --net-beast  --net-ro-port 31001
-
