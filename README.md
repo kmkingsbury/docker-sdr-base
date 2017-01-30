@@ -18,6 +18,10 @@ docker run -it \
 
 # Reference:
 
+```
+sudo docker run --rm -i -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=192.168.148.108:0 --privileged --name gnuradio gnuradio gnuradio-companion
+```
+
 ## Mac Setup Steps
 ```
 brew install socat
@@ -61,6 +65,8 @@ Unrecognized OpenGL version
 Unrecognized OpenGL version
 ```
 
+## Docker and GUIs:
+https://blog.jessfraz.com/post/docker-containers-on-the-desktop/
 
 ## RTL-SDR Howtos
 
