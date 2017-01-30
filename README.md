@@ -1,26 +1,23 @@
 # docker-sdr-base
-Base
 
+## Raspberry Pi Base radio stuff.
 
 ```
 docker build -t node1 .
 docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb node1 /bin/bash
 ```
 
-```
-docker run -it \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \ # mount the X11 socket
-    -e DISPLAY=unix$DISPLAY \ # pass the display
-    --device /dev/snd \ # sound
-    --name tor-browser \
-    jess/tor-browser
-```
 
-# Reference:
 
+## GNURadio GUI in Docker
+on Mac (maybe after setup steps complete):
 ```
+socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
+# in another window (not the xquartz term)
 sudo docker run --rm -i -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=192.168.148.108:0 --privileged --name gnuradio gnuradio gnuradio-companion
 ```
+
+
 
 ## Mac Setup Steps
 ```
@@ -65,9 +62,19 @@ Unrecognized OpenGL version
 Unrecognized OpenGL version
 ```
 
+# Reference:
+
 ## Docker and GUIs:
 https://blog.jessfraz.com/post/docker-containers-on-the-desktop/
 
+```
+docker run -it \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \ # mount the X11 socket
+    -e DISPLAY=unix$DISPLAY \ # pass the display
+    --device /dev/snd \ # sound
+    --name tor-browser \
+    jess/tor-browser
+```
 ## RTL-SDR Howtos
 
 http://sdr.osmocom.org/trac/wiki/rtl-sdr
