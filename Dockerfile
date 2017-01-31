@@ -1,7 +1,18 @@
 FROM debian:stretch
+#FROM debian:jessie
+
+RUN apt-get clean
 
 RUN apt-get update && \
-    apt-get -qy install curl ca-certificates
+    apt-get -qy install curl ca-certificates gnupg
+
+# Not available under stretch (so fake with xenial)
+#RUN add-apt-repository ppa:opencpn/opencpn
+RUN echo "deb http://ppa.launchpad.net/opencpn/opencpn/ubuntu xenial main" >> /etc/apt/sources.list
+RUN echo "deb-src http://ppa.launchpad.net/opencpn/opencpn/ubuntu xenial main " >> /etc/apt/sources.list
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 116A13C5EDCEAB50DB00229867E4A52AC865EB40
+RUN apt-get update
+RUN apt-get install -y --force-yes opencpn
 
 RUN apt-get install --no-install-recommends -y \
 	git-core \

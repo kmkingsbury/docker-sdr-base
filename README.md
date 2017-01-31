@@ -3,8 +3,8 @@
 ## Raspberry Pi Base radio stuff.
 
 ```
-docker build -t node1 .
-docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb node1 /bin/bash
+docker build -t gnuradio . --network=host
+docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb gnuradio /bin/bash
 ```
 
 
@@ -15,6 +15,11 @@ on Mac (maybe after setup steps complete):
 socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
 # in another window (not the xquartz term)
 sudo docker run --rm -i -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=192.168.148.108:0 --privileged --name gnuradio gnuradio gnuradio-companion
+```
+or
+```
+docker run --rm -i -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=192.168.148.108:0 --privileged --name gnuradio gnuradio opencpn
+
 ```
 
 
