@@ -1,0 +1,8 @@
+Compile an image:
+sudo docker build -t <insert_your_tag here> .
+
+List Docker images:
+sudo docker images
+
+Remove a Docker image:
+sudo docker rmi -f <image_id>
