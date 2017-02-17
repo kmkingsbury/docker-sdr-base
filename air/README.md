@@ -1,5 +1,5 @@
 ```
-docker build . -t air
+docker build -t air .
 xhost +
 docker run --rm -i -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix -v /dev/usb:/dev/usb -p 8085:8080 -p 8086:8081 --privileged --name air air mono VirtualRadar.exe 
 ```
