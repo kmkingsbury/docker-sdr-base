@@ -10,6 +10,13 @@ docker run -it --privileged -v /dev/bus/usb:/dev/bus/usb gnuradio /bin/bash
 
 
 ## GNURadio GUI in Docker
+On Linux:
+```
+$ xhost +
+access control disabled, clients can connect from any host
+$ sudo docker run --rm -i -e DISPLAY=$DISPLAY --privileged --name gnuradio gnuradio gnuradio-companion
+```
+
 on Mac (maybe after setup steps complete):
 ```
 socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"
