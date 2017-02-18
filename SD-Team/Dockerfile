@@ -44,7 +44,3 @@ WORKDIR /opencpn/OpenCPN-4.4.0/build
 RUN cmake ../ && make install && ldconfig
 WORKDIR /
 
-# This fixes an issue with the RTL-SDR; FATAL: Failed to open rtlsdr device.
-RUN echo '#!/bin/sh -e' > /etc/rc.local
-RUN echo "rmmod dvb_usb_rtl28xxu" >> /etc/rc.local
-RUN echo "exit 0" >> /etc/rc.local
