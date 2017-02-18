@@ -52,7 +52,7 @@ $ lsmod | grep rtl
 ```
 $ rmmod dvb_usb_rtl28xxu
 $ sudo apt-get install socat
-$ socat PTY,link=/dev/ttyS0 PTY,link=/dev/ttyS1
+$ socat PTY,link=/dev/ttyS0 PTY,link=/dev/ttyS1 &
 $ usermod -a -G dialout root
 $ python ais_rx --args="addr=192.168.10.2"
 ```
