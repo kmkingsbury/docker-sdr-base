@@ -12,6 +12,12 @@ To build an image with this file use:
 
 **DEPLOY**
 
+RMMOD RTL from both host and docker container 
+
+connect usb after virtual machine is up 
+
+
+
 To run GNU Radio in X11 forwarding mode (enables GUI):
 
 	$ xhost +
