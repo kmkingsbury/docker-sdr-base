@@ -13,7 +13,7 @@ To build an image with this file use:
 **DEPLOY**
 
 RMMOD RTL from both host and docker container 
-
+"rmmod dvb_usb_rtl28xxu"
 connect usb after virtual machine is up 
 
 
