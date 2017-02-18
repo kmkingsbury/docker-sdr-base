@@ -55,7 +55,7 @@ $ sudo apt-get install socat
 $ socat PTY,link=/dev/ttyS0 PTY,link=/dev/ttyS1 &
 $ usermod -a -G dialout root
 $ cd /ais/gr-ais-master/apps
-$ python ais_rx --args="addr=192.168.10.2"
+$ pyhton ais_rx -g 10 -s osmocom -e -50
 ```
 
 To run GNU Radio in X11 forwarding mode (enables GUI):
