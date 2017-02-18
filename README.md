@@ -6,13 +6,11 @@ docker pull normalfaults\gnuradio-big:2.0
 docker pull normalfaults\rtlsdr
 ```
 
-AIS Receiver
-```
-$ sudo apt-get install socat
-$ socat PTY,link=/dev/ttyS0 PTY,link=/dev/ttyS1
-$ usermod -a -G dialout root
-$ python ais_rx --args="addr=192.168.10.2"
-```
+
+
+
+
+
 ## Raspberry Pi Base radio stuff.
 
 ```
